@@ -1,0 +1,3 @@
+<% if @current_user %>
+  <p class= "UserHeader">Welcome <%=@current_user.name %>! <%= link_to "sign-out", destroy_sessions_path, method: "delete" %></p>
+<% end %>
