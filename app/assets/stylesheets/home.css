@@ -1,10 +1,16 @@
-.Home-title{
-  font-size: 30px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  text-decoration: underline;
+.Home{
+  display: flex;
 }
-.Home-authenticate{
-  margin-bottom: 20px;
-  font-size: 20px;
+
+.Welcome-section{
+  max-width: 500px;
+  margin: auto;
+  margin-top: 200px;
+
+}
+
+.Welcome-title{
+  font-size: 50px;
+  color: white;
+  font-family: monospace;
 }

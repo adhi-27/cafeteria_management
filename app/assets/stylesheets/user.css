@@ -1,3 +1,19 @@
+.Home-signout{
+  float: right;
+  margin-right: 200px;
+  margin-top: 20px;
+}
+
+.UserNew{
+  margin: auto;
+  margin-top: 200px;
+  margin-right: 200px;
+  padding: 20px 20px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 10px 10px 7px black;
+}
+
 .NewUsers-title{
   font-size: 30px;
   margin-bottom: 10px;

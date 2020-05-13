@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   get "/" => "home#index"
 
   resources :users
+  resources :menus
+  resources :menu_items
+  resources :order_items
 
   get "/signin" => "sessions#new", as: :new_sessions
   post "/signin" => "sessions#create", as: :sessions
   delete "/signout" => "sessions#delete", as: :destroy_sessions
 
   get "/cafeteria" => "cafeteria#index"
+  get "cafeteria/menus" => "cafeteria#menus", as: :create_menus
+  put "cafeteria/menus/activate" => "cafeteria#activate", as: :activate_menu
 end

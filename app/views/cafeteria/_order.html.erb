@@ -1,0 +1,17 @@
+<section class="Menu-section">
+  <p class= "Menu-title"><%= menu_name %></p>
+  <ul>
+    <% menu_items.each do |mitem| %>
+        <li>
+          <div class= "MenuItem">
+            <p class= "MenuItem-name"><%= mitem.name %></p>
+            <p class= "MenuItem-price">Rs. <%= mitem.price %></p>
+            <%= form_with(url: order_items_path, method: "POST", class: "AddMenu") do %>
+              <%= hidden_field_tag("menu_item_id", mitem.id) %>
+              <%= select_tag "quantity", options_for_select(1..5), onchange: "this.form.submit()" %>
+            <% end %>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+</section>

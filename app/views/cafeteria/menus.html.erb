@@ -1,0 +1,18 @@
+<%= form_with(url: "/menus", method: "POST", class: "AddMenu") do %>
+  <p class="AddMenu-text">ADD A NEW MENU: </p>
+  <%= text_field_tag("name", nil, placeholder: "Menu Name", class: "AddMenu-name") %>
+  <%= button_tag("Add",class: "AddMenu-button") %>
+<% end %>
+<% @menus= Menu.all %>
+  <%= form_with(url: activate_menu_path, method: "put", class: "ActivateMenu") do |f| %>
+    <label class="ActivateMenu-label">Activate A Menu: </label>
+    <%= f.select "menu_id", options_from_collection_for_select(@menus, "id", "name") %>
+    <%= f.submit("Activate",class: "ActivateMenu-buttton") %>
+  <% end %>
+<% Menu.all.each do |menu| %>
+  <%= render partial: "menu-section", locals: {
+            menu_name: menu.name,
+            menu_id: menu.id,
+            menu_items: MenuItem.specific_menu_items(menu.id) }
+  %>
+<% end %>

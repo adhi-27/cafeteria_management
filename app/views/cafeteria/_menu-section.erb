@@ -1,0 +1,20 @@
+<section class="Menu-section">
+  <p class= "Menu-title"><%= menu_name %></p>
+  <%= form_with(url: menu_items_path, method: "POST", class: "AddMenu") do %>
+    <label for="name" class= "AddMenu-text">ADD AN ITEM TO THE MENU: </label>
+    <%= text_field_tag("name", nil, placeholder: "Item Name", class: "AddMenu-name") %>
+    <%= text_field_tag("price", nil, placeholder: "Price", class: "AddMenu-name") %>
+    <%= hidden_field_tag("menu_id", menu_id) %>
+    <%= button_tag("Add",class: "AddMenu-button") %>
+  <% end %>
+  <ul>
+    <% menu_items.each do |mitem| %>
+        <li>
+          <div class= "MenuItem">
+            <p class= "MenuItem-name"><%= mitem.name %></p>
+            <p class= "MenuItem-price">Rs. <%= mitem.price %></p>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+</section>

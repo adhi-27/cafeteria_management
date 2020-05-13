@@ -1,19 +1,16 @@
 class SessionsController < ApplicationController
   skip_before_action :ensure_user_logged_in
 
-  def new
-    render "sessions/new"
-  end
-
   def create
     user = User.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
-      redirect_to "/"
+      new_order = Order.create!(user_id: user.id, date: Date.today, status: "Being Created")
+      session[:current_order_id] = new_order.id
     else
       flash[:error] = "Your Name or Password was Ivalid. Please retry."
-      redirect_to new_sessions_path
     end
+    redirect_to "/"
   end
 
   def delete

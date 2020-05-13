@@ -1,4 +1,28 @@
-<h1 class= 'Home-title'> Welcome to the Cafeteria</p>
+<section class= "Home">
+  <div class= "Welcome-section">
+    <h1 class= 'Welcome-title'> Welcome to the Cafeteria</p>
+  </div>
 
-<h3 class= "Home-authenticate"> If you are a new user, <%= link_to "sign-up", new_user_path %> here</h3>
-<h3 class= "Home-authenticate"> If you are an existing user, <%= link_to "sign-in", new_sessions_path %> here</h3>
+  <div>
+    <a href= "/users/new" class= "Home-signout">
+    <button type="button" class="Form-submit">Sign-up</button>
+    </a>
+
+    <div class= "UserNew">
+      <p class= "NewUsers-title"> Sign-in!</p>
+      <%= form_with url: sessions_path do |form| %>
+        <div class= "Form-section">
+          <p class= "FieldText">Name: </p>
+          <%= form.text_field :name, class: "TextField" %>
+        </div>
+        <div class= "Form-section">
+          <p class= "FieldText">Password: </p>
+          <%= form.password_field :password, class: "TextField" %>
+        </div>
+        <div class= "Form-section">
+          <%= form.submit "Sign-in!", class: "Form-submit"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
