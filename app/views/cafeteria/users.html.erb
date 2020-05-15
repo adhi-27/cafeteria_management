@@ -1,0 +1,15 @@
+<% if flash[:success] %>
+    <p class="Flash-success"><%= flash[:success] %> </p>
+<% end %>
+
+<%= render partial: "user-section", locals: {
+       user_type: "Customer",
+       users: @users.where(role: 'Customer'),
+       change: "Make Clerk" }
+%>
+
+<%= render partial: "user-section", locals: {
+       user_type: "Billing Clerk",
+       users: @users.all.where(role: "Billing Clerk"),
+       change: "Make Customer" }
+%>

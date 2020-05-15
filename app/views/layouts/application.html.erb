@@ -11,10 +11,20 @@
 
   <body>
     <% if @current_user %>
-    <% end %>
-
-    <% if flash[:error] %>
-      <p class="Flash-error"><%= flash[:error] %> </p>
+      <div class="Topnav">
+        <a class="Topnav-name" href= "/cafeteria" >Home</a>
+        <a class="Topnav-name" href="/cafeteria/orders" >Orders</a>
+        <% if @current_user.role == "owner" %>
+          <a class="Topnav-name" href="/cafeteria/menus">Menus</a>
+          <a class="Topnav-name" href="/cafeteria/users">Users</a>
+        <% end %>
+        <%= form_with url: destroy_sessions_path, method: "delete", class: "SignOut-form" do |f| %>
+          <%= f.submit("Sign-out",class: "SignOut") %>
+        <% end %>
+        <a class="Topnav-cart" href="/cafeteria/cart">
+          <%= image_tag("cart", class: "CartImage") %>
+        </a>
+      </div>
     <% end %>
 
     <%= yield %>

@@ -1,0 +1,30 @@
+<% if flash[:success] %>
+  <p class="Flash-success"><%= flash[:success] %></p>
+<% end %>
+<% if @user_orders.count!=0 %>
+  <% @user_orders.order(delivered_at: :desc).each do |order|%>
+    <section class= "Menu-section">
+      <p class= "Menu-title">Order ID: <%= order.id %></p>
+      <hr>
+      <% order.order_items.order(:id).each do |oitem| %>
+        <div class= "OrderItem-section" >
+          <div class="OrderItem">
+            <p class= "OrderItem-name"><%= oitem.menu_item_name %>  x  <%= oitem.quantity %><p>
+            <p class="MenuItem-quantity">Rs. <%= oitem.quantity * oitem.menu_item_price %></p>
+          </div>
+          <p>Rs. <%= oitem.menu_item_price %></p>
+        </div>
+      <% end %>
+      <p class= "Order-status">Order <%= order.status %></p>
+      <% if order.delivered_at == nil and @current_user.role != "Customer"%>
+        <%= form_with url: "/orders/#{order.id}", method: "put", class: "OrderDeliver" do |form| %>
+          <%= form.submit "Delivered", class: "Form-submit"%>
+        <% end %>
+      <% end %>
+    </section>
+  <% end %>
+<% else %>
+  <section class= "Menu-section">
+    <p class = EmptyOrder >No Orders Yet</p>
+  </section>
+<% end %>

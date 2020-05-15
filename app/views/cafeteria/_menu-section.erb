@@ -1,5 +1,6 @@
 <section class="Menu-section">
   <p class= "Menu-title"><%= menu_name %></p>
+  <hr>
   <%= form_with(url: menu_items_path, method: "POST", class: "AddMenu") do %>
     <label for="name" class= "AddMenu-text">ADD AN ITEM TO THE MENU: </label>
     <%= text_field_tag("name", nil, placeholder: "Item Name", class: "AddMenu-name") %>

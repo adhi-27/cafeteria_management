@@ -5,16 +5,20 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
-      new_order = Order.create!(user_id: user.id, date: Date.today, status: "Being Created")
-      session[:current_order_id] = new_order.id
+      session[:current_order_id] = nil
     else
-      flash[:error] = "Your Name or Password was Ivalid. Please retry."
+      flash[:error] = "Your Name or Password was Invalid."
     end
     redirect_to "/"
   end
 
   def delete
     session[:current_user_id] = nil
+    if session[:current_order_id]
+      order = Order.find_by(id: session[:current_order_id])
+      order.order_items.destroy_all
+      order.destroy
+    end
     @current_user = nil
     redirect_to "/"
   end

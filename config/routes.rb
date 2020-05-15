@@ -6,12 +6,18 @@ Rails.application.routes.draw do
   resources :menus
   resources :menu_items
   resources :order_items
+  resources :orders
 
   get "/signin" => "sessions#new", as: :new_sessions
   post "/signin" => "sessions#create", as: :sessions
   delete "/signout" => "sessions#delete", as: :destroy_sessions
 
   get "/cafeteria" => "cafeteria#index"
-  get "cafeteria/menus" => "cafeteria#menus", as: :create_menus
-  put "cafeteria/menus/activate" => "cafeteria#activate", as: :activate_menu
+  get "/cafeteria/menus" => "cafeteria#menus", as: :create_menus
+  get "/cafeteria/users" => "cafeteria#users"
+  get "/cafeteria/cart" => "cafeteria#cart"
+  get "/cafeteria/orders" => "cafeteria#orders"
+  put "/cafeteria/menus/activate" => "cafeteria#activate", as: :activate_menu
+
+  get "/orders/confirm" => "orders#confirm"
 end

@@ -1,11 +1,25 @@
 class CafeteriaController < ApplicationController
   def index
     @menu = Menu.active_menu
-    render "cafeteria/index"
+    render "index"
   end
 
   def menus
-    render "cafeteria/menus"
+    render "menus"
+  end
+
+  def users
+    @users = User.all
+    render "users"
+  end
+
+  def orders
+    if @current_user.role == "Customer"
+      @user_orders = @current_user.orders
+    else
+      @user_orders = Order.all
+    end
+    render "orders"
   end
 
   def activate
@@ -14,6 +28,17 @@ class CafeteriaController < ApplicationController
       menu.active = menu.id != menu_id ? false : true
       menu.save!
     end
+    flash[:success] = "Menu was Activated Successfully"
     redirect_to create_menus_path
+  end
+
+  def cart
+    current_order = Order.find_by(id: session[:current_order_id])
+    if current_order
+      @order_items = current_order.order_items
+    else
+      @order_items = nil
+    end
+    render "cart"
   end
 end

@@ -1,0 +1,16 @@
+<section class="Menu-section">
+  <p class= "Menu-title"><%= user_type %></p>
+  <hr>
+  <ul>
+    <% users.each do |user| %>
+        <li>
+          <div class= "MenuItem">
+            <p class= "MenuItem-name"><%= user.name %></p>
+            <%= form_with(url: "/users/#{user.id}", method: "put") do |f| %>
+              <%= f.submit(change,class: "AddMenu-button") %>
+            <% end %>
+          </div>
+        </li>
+    <% end %>
+  </ul>
+</section>

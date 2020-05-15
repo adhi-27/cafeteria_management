@@ -4,11 +4,17 @@
     <% menu_items.each do |mitem| %>
         <li>
           <div class= "MenuItem">
-            <p class= "MenuItem-name"><%= mitem.name %></p>
-            <p class= "MenuItem-price">Rs. <%= mitem.price %></p>
-            <%= form_with(url: order_items_path, method: "POST", class: "AddMenu") do %>
+            <p class= "MenuItem-name"><%= mitem.name %>  - Rs. <%= mitem.price %></p>
+            <%= form_with(url: order_items_path, method: "POST") do %>
               <%= hidden_field_tag("menu_item_id", mitem.id) %>
-              <%= select_tag "quantity", options_for_select(1..5), onchange: "this.form.submit()" %>
+              <% menu_item = OrderItem.find_by(order_id: session[:current_order_id], menu_item_id: mitem.id)
+                 if menu_item
+                   disp = menu_item.quantity
+                 else
+                   disp = "Add To Cart"
+                 end
+              %>
+              <%= select_tag "quantity", options_for_select([raw("<option selected hidden>Add To Cart</option>"),1,2,3,4,5],disp), onchange: "this.form.submit()", class: "MenuItem-quantity" %>
             <% end %>
           </div>
         </li>

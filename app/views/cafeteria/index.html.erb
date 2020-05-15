@@ -1,13 +1,6 @@
-<div class="topnav">
-  <a class="active" href= cafeteria_path >Home</a>
-  <a href="#old_orders">Orders</a>
-  <% if @current_user.role == "owner" %>
-    <a href="/cafeteria/menus">Menus</a>
-  <% end %>
-  <%= form_with url: destroy_sessions_path, method: "delete", class: "SignOut-form" do |f| %>
-    <%= f.submit("Sign-out",class: "SignOut") %>
-  <% end %>
-</div>
+<% if flash[:success] %>
+    <p class="Flash-success"><%= flash[:success] %> </p>
+<% end %>
 
 <%= render partial: "order", locals: {
          menu_name: @menu.name,

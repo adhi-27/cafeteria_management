@@ -1,0 +1,30 @@
+<section class= "Menu-section">
+  <p class= "Menu-title">Order Items</p>
+  <hr>
+  <% if flash[:error] %>
+    <p class="Flash-error"><%= flash[:error] %> </p>
+  <% end %>
+  <% if @order_items && @order_items.count!=0 %>
+    <% @order_items.order(:id).each do |oitem| %>
+      <div class= "OrderItem-section" >
+        <div class="OrderItem">
+          <p class= "OrderItem-name"><%= oitem.menu_item_name %>  x  <%= oitem.quantity %><p>
+          <p class="ChangeQuantity">
+            <a href= "/order_items/<%= oitem.id%>?symbol=0" data-method="PATCH" class= "ChangeQuantity-symbol">-</a>
+              <%= oitem.quantity %>
+            <a href= "/order_items/<%= oitem.id%>?symbol=1" data-method="PATCH" class= "ChangeQuantity-symbol">+</a>
+          </p>
+          <p class="MenuItem-quantity">Rs. <%= oitem.quantity * oitem.menu_item_price %></p>
+        </div>
+        <p>Rs. <%= oitem.menu_item_price %></p>
+      </div>
+    <%end%>
+    <p class= "Order-button">
+      <a href= "/orders/confirm">
+        <button type="button" class="Form-submit">Order</button>
+      </a>
+    </p>
+  <% else %>
+    <p class = EmptyCart >The Cart Is Empty</p>
+  <% end %>
+</section>

@@ -10,6 +10,9 @@
 
     <div class= "UserNew">
       <p class= "NewUsers-title"> Sign-in!</p>
+      <% if flash[:error] %>
+        <p class="Flash-error"><%= flash[:error] %> </p>
+      <% end %>
       <%= form_with url: sessions_path do |form| %>
         <div class= "Form-section">
           <p class= "FieldText">Name: </p>
