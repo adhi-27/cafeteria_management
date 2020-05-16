@@ -4,10 +4,6 @@
   </div>
 
   <div>
-    <a href= "/users/new" class= "Home-signout">
-    <button type="button" class="Form-submit">Sign-up</button>
-    </a>
-
     <div class= "UserNew">
       <p class= "NewUsers-title"> Sign-in!</p>
       <% if flash[:error] %>
@@ -15,8 +11,8 @@
       <% end %>
       <%= form_with url: sessions_path do |form| %>
         <div class= "Form-section">
-          <p class= "FieldText">Name: </p>
-          <%= form.text_field :name, class: "TextField" %>
+          <p class= "FieldText">Email: </p>
+          <%= form.email_field :email, class: "TextField" %>
         </div>
         <div class= "Form-section">
           <p class= "FieldText">Password: </p>

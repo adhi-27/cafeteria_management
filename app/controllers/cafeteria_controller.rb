@@ -5,12 +5,20 @@ class CafeteriaController < ApplicationController
   end
 
   def menus
-    render "menus"
+    if @current_user.role == "owner"
+      render "menus"
+    else
+      redirect_to cafeteria_path
+    end
   end
 
   def users
-    @users = User.all
-    render "users"
+    if @current_user.role == "owner"
+      @users = User.all
+      render "users"
+    else
+      redirect_to cafeteria_path
+    end
   end
 
   def orders

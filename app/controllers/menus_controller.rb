@@ -7,4 +7,12 @@ class MenusController < ApplicationController
     end
     redirect_to create_menus_path
   end
+
+  def destroy
+    menu = Menu.find_by(id: params[:id])
+    menu.menu_items.destroy_all
+    menu.destroy
+    flash[:success] = "Menu destroyed Successfully"
+    redirect_to "/cafeteria/menus"
+  end
 end

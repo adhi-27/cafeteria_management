@@ -18,7 +18,8 @@
 }
 
 .Order-status{
-  margin-left: 280px;
+  max-width: 700px;
+  text-align: center;
   color: green;
   font-size: 15px;
 }
@@ -36,12 +37,18 @@
 }
 
 .Flash-success{
-  color: green;
+  color: white;
   margin-bottom: 20px;
   padding: 5px 15px;
   font-size: 16px;
-  background-color: white;
+  background-color: green;
   text-align: center;
+}
+
+.Total{
+  margin-left: 270px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .OrderDeliver{

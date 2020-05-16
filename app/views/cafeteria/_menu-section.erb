@@ -1,5 +1,10 @@
 <section class="Menu-section">
-  <p class= "Menu-title"><%= menu_name %></p>
+  <div class="Menu-head">
+    <p class= "Menu-title"><%= menu_name %></p>
+    <%= form_with(url: "/menus/#{menu_id}", method: "delete") do %>
+      <%= image_submit_tag("menucross.png", class: "MenuCrossImage") %>
+    <% end %>
+  </div>
   <hr>
   <%= form_with(url: menu_items_path, method: "POST", class: "AddMenu") do %>
     <label for="name" class= "AddMenu-text">ADD AN ITEM TO THE MENU: </label>
@@ -14,6 +19,11 @@
           <div class= "MenuItem">
             <p class= "MenuItem-name"><%= mitem.name %></p>
             <p class= "MenuItem-price">Rs. <%= mitem.price %></p>
+            <a href="javascript:void(0)" class="MenuItem-delete">
+              <%= form_with(url: "/menu_items/#{mitem.id}", method: "delete") do %>
+                <%= image_submit_tag("cross.jpg", class: "CrossImage") %>
+              <% end %>
+            </a>
           </div>
         </li>
     <% end %>

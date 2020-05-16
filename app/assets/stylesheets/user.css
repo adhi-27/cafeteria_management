@@ -1,13 +1,22 @@
-.Home-signout{
+.Home-signup{
   float: right;
-  margin-right: 200px;
-  margin-top: 20px;
+  margin: 25px 50px;
 }
 
 .UserNew{
   margin: auto;
-  margin-top: 200px;
+  margin-top: 120px;
   margin-right: 200px;
+  padding: 20px 20px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 10px 10px 7px black;
+}
+
+.UserNewSign{
+  max-width: 330px;
+  margin: auto;
+  margin-top: 100px;
   padding: 20px 20px;
   border-radius: 20px;
   background-color: white;
@@ -47,4 +56,9 @@
   background-color: #053d1c;
   border-radius: 8px;
   border: 0;
+}
+
+.Back{
+  margin-top: 50px;
+  margin-left: 30px;
 }

@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def create
     name = params[:name]
     pass = params[:password]
-    new_user = User.new(name: name, password: pass, role: "Customer")
+    mail = params[:email]
+    new_user = User.new(name: name, email: mail, password: pass, role: "Customer")
     if !new_user.save
       flash[:error] = new_user.errors.full_messages.join(", ")
       redirect_to new_user_path

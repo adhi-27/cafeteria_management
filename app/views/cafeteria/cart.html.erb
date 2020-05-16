@@ -5,6 +5,7 @@
     <p class="Flash-error"><%= flash[:error] %> </p>
   <% end %>
   <% if @order_items && @order_items.count!=0 %>
+    <% total = 0 %>
     <% @order_items.order(:id).each do |oitem| %>
       <div class= "OrderItem-section" >
         <div class="OrderItem">
@@ -14,15 +15,18 @@
               <%= oitem.quantity %>
             <a href= "/order_items/<%= oitem.id%>?symbol=1" data-method="PATCH" class= "ChangeQuantity-symbol">+</a>
           </p>
-          <p class="MenuItem-quantity">Rs. <%= oitem.quantity * oitem.menu_item_price %></p>
+          <p class="MenuItem-quantity">Rs. <%= amount = oitem.quantity * oitem.menu_item_price %></p>
+          <% total += amount %>
         </div>
         <p>Rs. <%= oitem.menu_item_price %></p>
       </div>
     <%end%>
+    <p class= "Total">Total: <%= total %></p>
     <p class= "Order-button">
-      <a href= "/orders/confirm">
-        <button type="button" class="Form-submit">Order</button>
-      </a>
+      <%= form_with(url: "/orders/confirm", method: "put") do %>
+        <%= hidden_field_tag "total", total %>
+        <%= submit_tag "Order", class: "Form-submit" %>
+      <% end %>
     </p>
   <% else %>
     <p class = EmptyCart >The Cart Is Empty</p>

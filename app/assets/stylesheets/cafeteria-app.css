@@ -7,15 +7,68 @@ body{
   background-attachment: fixed;
 }
 
+.Header{
+  height: 100px;
+  background-color: black;
+}
+
+.Icon-section{
+  float: left;
+  height: 65px;
+  width: 100px;
+  margin-top: 18px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.Icon{
+  padding: 5px 5px 5px 20px;
+  height: 55px;
+  width: 55px;
+}
+
+.Cafeteria-name{
+  float: left;
+  font-size: 55px;
+  font-family: cursive;
+  padding-top: 3px;
+  margin-top: 18px;
+  margin-left: 10px;
+  color: white;
+}
+
+.User-name{
+  float: right;
+  margin-top: 35px;
+  padding: 10px;
+  padding-right: 30px;
+  border-radius: 10px 0px 0px 10px;
+  background-color: maroon;
+  color: white;
+  font-size: 15px;
+}
+
 .Topnav {
-  background-color: #333;
+  background-color: white;
   overflow: hidden;
 }
 
 /* Style the links inside the navigation bar */
 .Topnav-name {
   float: left;
-  color: #f2f2f2;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  border-left:  1px solid black;
+}
+/* Add a color to the active/current link */
+.Active {
+  float: left;
+  color: gold;
+  background-color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -46,14 +99,9 @@ body{
 
 /* Change the color of links on hover */
 .Topnav-name:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.Active {
-  background-color: #4CAF50;
-  color: white;
+  background-color: black;
+  color: gold;
+  text-decoration: underline;
 }
 
 .SignOut{
@@ -77,6 +125,10 @@ body{
   border-color: darkgoldenrod;
 }
 
+.Menu-head{
+  display: flex;
+}
+
 .Menu-title{
   margin-left: 200px;
   margin-bottom: 30px;
@@ -92,22 +144,59 @@ body{
   border-radius: 10px;
 }
 
+.MenuCrossImage{
+  margin-left: 200px;
+  height: 18px;
+  width: 18px;
+}
+
 .MenuItem{
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  padding: 4px;
   width: 700px;
   font-size: 15px;
   margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.MenuItem:hover{
+  background: #F1EDF7;
 }
 
 .MenuItem-name{
   float: left;
-  width: 600px;
+  width: 580px;
+}
+
+.MenuItem-price{
+  margin-right: 10px;
+}
+
+.CrossImage{
+  height: 18px;
+  width: 18px;
 }
 
 .MenuItem-quantity{
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.Order-title{
+  margin-left: 200px;
+  max-width: 300px;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+  font-family: cursive;
+}
+
+.Name{
+  margin-left: 300px;
+  margin-bottom: 15px;
+  color: darkorange;
+  font-size: 15px;
 }
 
 .OrderItem-section{
@@ -126,16 +215,13 @@ body{
   width: 500px;
 }
 
-.TodoItem{
-  display: flex;
-  margin-bottom: 10px;
-  align-items: center;
-  border-radius: 4px;
-  width: 450px;
+.MenuItem-delete{
+  visibility: hidden;
+  margin-right: 5px;
 }
 
-.TodoItem:hover{
-  background: #F1EDF7;
+.MenuItem:hover .MenuItem-delete{
+  visibility: visible;
 }
 
 .AddMenu{
