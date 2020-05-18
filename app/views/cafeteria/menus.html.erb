@@ -13,7 +13,6 @@
     <%= button_tag("Add",class: "AddMenu-button") %>
   <% end %>
   <% @menus= Menu.all.order(active: :desc) %>
-  <% curr_active_menu= @menus.where(active: true).first.name%>
   <%= form_with(url: activate_menu_path, method: "put", class: "ActivateMenu") do |f| %>
     <label class="ActivateMenu-label">Activate A Menu: </label>
     <%= f.select "menu_id", options_from_collection_for_select(@menus, "id", "name") %>

@@ -1,6 +1,11 @@
 class CafeteriaController < ApplicationController
   def index
     @menu = Menu.active_menu
+    if params[:category]
+      @category = params[:category]
+    else
+      @category = @menu.menu_items.first.category
+    end
     render "index"
   end
 

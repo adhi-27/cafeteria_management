@@ -55,3 +55,32 @@
   margin-left: 300px;
   margin-top: 15px;
 }
+
+.Category-section{
+  max-width: 700px;
+  text-align: center;
+}
+
+.Category{
+  text-decoration: none;
+  display: inline-block;
+}
+
+.Category-button{
+  padding: 6px 6px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: white;
+  background-color: #48bb78;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.Category-title{
+  font-size: 30px;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 2px solid maroon;
+}

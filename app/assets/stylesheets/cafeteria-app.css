@@ -125,13 +125,25 @@ body{
   border-color: darkgoldenrod;
 }
 
+.Menus-section{
+  max-width: 750px;
+  margin: auto;
+  margin-top: 30px;
+  background-color: white;
+  padding: 25px;
+  font-family: monospace;
+  border-style: solid;
+  border-width: 10px;
+  border-color: darkgoldenrod;
+}
+
 .Menu-head{
   display: flex;
 }
 
 .Menu-title{
   margin-left: 200px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 10px;
   text-align: center;
   max-width: 300px;
@@ -166,7 +178,7 @@ body{
 
 .MenuItem-name{
   float: left;
-  width: 580px;
+  width: 400px;
 }
 
 .MenuItem-price{
@@ -252,4 +264,40 @@ body{
   background-color: #48bb78;
   border: 1px solid transparent;
   border-radius: 4px;
+}
+
+.Description-section{
+  float: right;
+  margin-left: 15px;
+}
+
+.DownImage{
+  height: 15px;
+  width: 15px;
+  padding-top: 7px;
+}
+
+.Description{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  max-width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+}
+
+.Description-section:hover .Description{
+  display: flex;
+}
+
+.Description-image{
+  height: 100px;
+  width: 80px;
+  border: 1px solid black;
+}
+
+.Description-text{
+  padding-left: 10px;
+  font-size: 10px;
 }
