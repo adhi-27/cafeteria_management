@@ -26,12 +26,15 @@
       </header>
       <% if @current_user %>
         <div class="Topnav">
-          <% path = request.original_fullpath %>
+          <% path = request.path %>
+          <a class=<%= path == "/cafeteria/about" ? "Active" : "Topnav-name" %> href= "/cafeteria/about" >About</a>
           <a class=<%= path == "/cafeteria" ? "Active" : "Topnav-name" %> href= "/cafeteria" >Home</a>
           <a class=<%= path == "/cafeteria/orders" ? "Active" : "Topnav-name" %> href="/cafeteria/orders" >Orders</a>
           <% if @current_user.role == "owner" %>
             <a class=<%= path == "/cafeteria/menus" ? "Active" : "Topnav-name" %> href="/cafeteria/menus">Menus</a>
+            <a class=<%= path == "/cafeteria/menu_items" ? "Active" : "Topnav-name" %> href="/cafeteria/menu_items">Menu Items</a>
             <a class=<%= path == "/cafeteria/users" ? "Active" : "Topnav-name" %> href="/cafeteria/users">Users</a>
+            <a class=<%= path == "/cafeteria/report" ? "Active" : "Topnav-name" %> href="/cafeteria/report">Sales Report</a>
           <% end %>
           <%= form_with url: destroy_sessions_path, method: "delete", class: "SignOut-form" do |f| %>
             <%= f.submit("Sign-out",class: "SignOut") %>

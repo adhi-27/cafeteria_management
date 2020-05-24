@@ -2,9 +2,30 @@
     <p class="Flash-success"><%= flash[:success] %> </p>
 <% end %>
 
-<%= render partial: "order", locals: {
-         menu_name: @menu.name,
-         menu_id: @menu.id,
-         menu_items: MenuItem.specific_menu_items(@menu.id),
-         category: @category }
+<%
+  mitem_ids = @menu.specific_menu_items.map { |item| item.menu_item_id}
+  mitems = MenuItem.where(id: mitem_ids)
 %>
+
+<section class="Menu-section">
+  <p class= "Menu-title"><%= @menu.name %></p>
+  <hr>
+  <div class= "Category-section">
+    <% mitems.select(:category).distinct.each do |item| %>
+      <a href="#<%= item.category.split().join('_') %>" class= "Category">
+        <button class= "Category-button" >
+          <%= item.category%>
+        </button>
+      </a>
+    <% end %>
+  </div>
+
+  <% mitems.select(:category).distinct.each do |item| %>
+    <a id="<%= item.category.split().join('_') %>" >
+      <%= render partial: "menu", locals: {
+            menu_items: MenuItem.where(category: item.category),
+            category: item.category }
+      %>
+    </a>
+  <% end %>
+</section>

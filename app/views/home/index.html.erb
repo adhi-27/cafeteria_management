@@ -1,9 +1,11 @@
 <section class= "Home">
   <div class= "Welcome-section">
-    <h1 class= 'Welcome-title'> Welcome to the Cafeteria</p>
+    <div>
+      <h1 class= 'Welcome-title'> Welcome to the Cafeteria</p>
+    </div>
   </div>
 
-  <div>
+  <div class="SignIn-section">
     <div class= "UserNew">
       <p class= "NewUsers-title"> Sign-in!</p>
       <% if flash[:error] %>
@@ -12,7 +14,7 @@
       <%= form_with url: sessions_path do |form| %>
         <div class= "Form-section">
           <p class= "FieldText">Email: </p>
-          <%= form.email_field :email, class: "TextField" %>
+          <%= form.email_field :email, autofocus: true, class: "TextField" %>
         </div>
         <div class= "Form-section">
           <p class= "FieldText">Password: </p>
@@ -25,3 +27,5 @@
     </div>
   </div>
 </section>
+
+<%= render partial: "about" %>

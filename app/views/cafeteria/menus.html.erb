@@ -8,21 +8,34 @@
     <p class="Flash-error"><%= flash[:error] %> </p>
   <% end %>
   <%= form_with(url: "/menus", method: "POST", class: "AddMenu") do %>
-    <p class="AddMenu-text">ADD A NEW MENU: </p>
+    <p class="AddMenu-text">CREATE A NEW MENU: </p>
     <%= text_field_tag("name", nil, placeholder: "Menu Name", class: "AddMenu-name") %>
-    <%= button_tag("Add",class: "AddMenu-button") %>
+    <%= button_tag("Create",class: "AddMenu-button") %>
   <% end %>
   <% @menus= Menu.all.order(active: :desc) %>
   <%= form_with(url: activate_menu_path, method: "put", class: "ActivateMenu") do |f| %>
     <label class="ActivateMenu-label">Activate A Menu: </label>
-    <%= f.select "menu_id", options_from_collection_for_select(@menus, "id", "name") %>
+    <%= f.select "menu_id", options_from_collection_for_select(@menus, "id", "name", @menus.find_by(active: true).id) %>
     <%= f.submit("Activate",class: "ActivateMenu-buttton") %>
   <% end %>
 </section>
-<% Menu.all.order(id: :desc).each do |menu| %>
-  <%= render partial: "menu-section", locals: {
-            menu_name: menu.name,
-            menu_id: menu.id,
-            menu_items: MenuItem.specific_menu_items(menu.id) }
-  %>
-<% end %>
+
+<div class= "MenuNames-section">
+  <% Menu.all.each do |menu| %>
+    <a href="/cafeteria/menus?menu_id=<%= menu.id %>" class= "Menus">
+      <button class= "Menu-button" >
+        <%= menu.name%>
+      </button>
+    </a>
+  <% end %>
+</div>
+
+<%
+  mitem_ids = @menu.specific_menu_items.map { |item| item.menu_item_id }
+%>
+
+<%= render partial: "menu-section", locals: {
+          menu_name: @menu.name,
+          menu_id: @menu.id,
+          menu_items: MenuItem.where(id: mitem_ids) }
+%>

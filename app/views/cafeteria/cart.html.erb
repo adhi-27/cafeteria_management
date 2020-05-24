@@ -17,11 +17,16 @@
           </p>
           <p class="MenuItem-quantity">Rs. <%= amount = oitem.quantity * oitem.menu_item_price %></p>
           <% total += amount %>
+          <a href="javascript:void(0)" class="OrderItem-delete">
+            <%= form_with(url: "/order_items/#{oitem.id}", method: "delete") do %>
+              <%= image_submit_tag("cross.jpg", class: "CrossImage") %>
+            <% end %>
+          </a>
         </div>
         <p>Rs. <%= oitem.menu_item_price %></p>
       </div>
     <%end%>
-    <p class= "Total">Total: <%= total %></p>
+    <p class= "Total">Total: Rs.<%= total %></p>
     <p class= "Order-button">
       <%= form_with(url: "/orders/confirm", method: "put") do %>
         <%= hidden_field_tag "total", total %>

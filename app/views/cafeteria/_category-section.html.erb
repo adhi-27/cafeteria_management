@@ -1,0 +1,57 @@
+<p class= "Category-title"><%= category %></p>
+<ul>
+<% menu_items.each do |mitem| %>
+  <li>
+    <div class= "MenuItem">
+      <% if menu_id and request.original_fullpath == "/cafeteria/menu_items" %>
+        <%= form_with(url: "/specific_menu_items", method: "post") do |f| %>
+          <% if Menu.find_by(id: menu_id).specific_menu_items.find_by(menu_item_id: mitem.id)
+               check = true
+             else
+               check = false
+             end
+          %>
+          <%= f.hidden_field(:menu_id, value: menu_id) %>
+          <%= f.hidden_field(:mitem_id, value: mitem.id) %>
+          <%= f.check_box :contains, checked: check, class: "MenuItem-checkbox", onclick: "this.form.submit()" %>
+        <% end %>
+      <% end %>
+      <p class= "MenuItem-name"><%= mitem.name %></p>
+      <p class= "MenuItem-price">Rs. <%= mitem.price %></p>
+      <div class="Description-section">
+        <%= image_tag "down.svg", class: "DownImage"%>
+        <div class="Description">
+          <% if mitem.image.attached? %>
+            <%= image_tag mitem.image, alt: "No Image", class: "Description-image"%>
+          <% else %>
+            <%= image_tag "noimage.png", alt: "No Image", class: "NoImage"%>
+          <% end %>
+          <% if mitem.description %>
+            <p class="Description-text"><%= mitem.description %></p>
+          <% else %>
+            <p class="Description-text">No Description</p>
+          <% end %>
+        </div>
+      </div>
+      <% if !menu_id %>
+        <% if request.original_fullpath == "/cafeteria/menu_items" %>
+          <a href="javascript:void(0)" class="MenuItem-delete">
+            <%= form_with(url: "/menu_items/#{mitem.id}", method: "delete") do %>
+              <%= image_submit_tag("cross.jpg", class: "CrossImage") %>
+            <% end %>
+          </a>
+        <% end %>
+      <% else %>
+        <% if request.path == "/cafeteria/menus" %>
+          <a href="javascript:void(0)" class="MenuItem-delete">
+            <% item_id = SpecificMenuItem.find_by(menu_id: menu_id, menu_item_id: mitem.id).id %>
+            <%= form_with(url: "/specific_menu_items/#{item_id}", method: "delete") do %>
+              <%= image_submit_tag("cross.jpg", class: "CrossImage") %>
+            <% end %>
+          </a>
+        <% end %>
+      <% end %>
+    </div>
+  </li>
+<% end %>
+</ul>

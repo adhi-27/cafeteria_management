@@ -1,0 +1,15 @@
+<%= form_with(url: "/cafeteria/report", method: "GET", class: "Report-form") do |f| %>
+  <%= f.label "From" %>
+  <%= f.date_field(:from_date) %>
+  <%= f.label "To" %>
+  <%= f.date_field(:to_date, max: Date.today) %>
+  <%= f.submit("View",class: "AddMenu-button") %>
+<% end %>
+
+<div class="AddMenu-div">
+  <p><%= @range %></p>
+  <p>Total No. of Orders: <%= @count%></p>
+  <p>Total Sales: Rs.<%= @total%></p>
+</div>
+
+<%= render partial: "orders-section", locals: { orders: @orders } %>

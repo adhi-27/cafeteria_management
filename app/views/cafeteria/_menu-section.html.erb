@@ -1,0 +1,23 @@
+<section class="Menus-section">
+  <div class="Menu-head">
+    <p class= "Menus-title"><%= menu_name %></p>
+    <%= form_with(url: "/menus/#{menu_id}", method: "delete") do %>
+      <%= image_submit_tag("menucross.png", class: "MenuCrossImage") %>
+    <% end %>
+  </div>
+  <hr>
+  <p>
+    <a href= "/cafeteria/additem?id=<%= menu_id %>&name=<%= menu_name%>" style="text-decoration: none;">
+      <div class= "AddMenu-section">
+        <p class= "AddMenuItem-text">ADD ITEMS TO THE MENU</p>
+      </div>
+    </a>
+  </p>
+  <% menu_items.select(:category).distinct.each do |mitem| %>
+    <%= render partial: "category-section", locals: {
+          category: mitem.category,
+          menu_id: menu_id,
+          menu_items: menu_items.where(category: mitem.category) }
+    %>
+  <% end %>
+</section>

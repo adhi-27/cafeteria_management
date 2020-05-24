@@ -9,7 +9,7 @@
   <%= form_with url: users_path do |form| %>
     <div class= "Form-section">
       <p class= "FieldText">Name</p>
-      <%= form.text_field :name, class: "TextField" %>
+      <%= form.text_field :name, autofocus: true, class: "TextField" %>
     </div>
     <div class= "Form-section">
       <p class= "FieldText">Email</p>

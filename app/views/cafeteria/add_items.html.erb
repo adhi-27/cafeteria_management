@@ -1,0 +1,40 @@
+<% if flash[:success]  %>
+  <p class="Flash-success"><%= flash[:success] %> </p>
+<% end %>
+<section class= "Menus-section">
+  <p class= "Menu-title">Menu Items</p>
+  <hr>
+  <% if flash[:error]  %>
+    <p class="Flash-error"><%= flash[:error] %> </p>
+  <% end %>
+  <p class= "AddNew-menu">Add a new menu-item: </p>
+  <div class="AddMenu-div">
+    <%= form_with(url: menu_items_path, method: "POST", class: "AddMenu-Item") do |f| %>
+      <%= f.text_field(:name, placeholder: "Item Name", class: "AddMenu-name") %>
+      <%= f.text_field(:category, placeholder: "Category", class: "AddMenu-name") %>
+      <%= f.text_field(:price, placeholder: "Price", class: "AddMenu-name") %>
+      <%= f.hidden_field(:menu_id, value: menu_id) %>
+      <div class= "DescriptionInput">
+        <%= f.label "Description: " %>
+        <%= f.text_area :description %>
+      </div>
+      <div class= "ImageInput">
+        <%= f.label "Item Image:  " %>
+        <%= f.file_field :image %>
+      </div>
+      <%= f.submit("Add",class: "AddMenu-button") %>
+    <% end %>
+  </div>
+  <% @menu_items.select(:category).distinct.each do |mitem| %>
+    <%= render partial: "category-section", locals: {
+          category: mitem.category,
+          menu_id: menu_id
+          menu_items: @menu_items.where(category: mitem.category) }
+    %>
+  <% end %>
+  <% if menu_id %>
+    <a href="/cafeteria/menus">
+      <%= button_tag("Done",class: "AddMenu-button") %>
+    </a>
+  <% end %>
+</section>

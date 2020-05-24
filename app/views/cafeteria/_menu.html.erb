@@ -1,0 +1,39 @@
+<p class= "Category-title"><%= category%></p>
+<ul>
+  <% menu_items.each do |mitem| %>
+      <li>
+        <div class= "MenuItem">
+          <div class="Description-section">
+            <%= image_tag "down.svg", class: "DownImage"%>
+            <div class="Description">
+              <% if mitem.image.attached? %>
+                <%= image_tag mitem.image, alt: "No Image", class: "Description-image"%>
+              <% else %>
+                <%= image_tag "noimage.png", alt: "No Image", class: "NoImage"%>
+              <% end %>
+              <% if mitem.description %>
+                <p class="Description-text"><%= mitem.description %></p>
+              <% else %>
+                <p class="Description-text">No Description</p>
+              <% end %>
+            </div>
+          </div>
+          <p class= "MenuItem-name"><%= mitem.name %>  - Rs. <%= mitem.price %></p>
+          <%= form_with(url: order_items_path, method: "POST") do %>
+            <%= hidden_field_tag("menu_item_id", mitem.id) %>
+            <%= hidden_field_tag("category", @category) %>
+            <% order_item = OrderItem.find_by(order_id: session[:current_order_id], menu_item_id: mitem.id)
+                if order_item
+                  disp = order_item.quantity
+                  prompt = 0
+                else
+                  disp = nil
+                  prompt = "Add To Cart"
+                end
+            %>
+            <%= select_tag "quantity", options_for_select([prompt,1,2,3,4,5],disp), onchange: "this.form.submit()", class: "MenuItem-quantity" %>
+          <% end %>
+        </div>
+      </li>
+  <% end %>
+</ul>

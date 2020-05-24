@@ -1,0 +1,25 @@
+<% orders.order(delivered_at: :desc).each do |order|%>
+  <section class= "Menu-section">
+    <p class= "Order-title">Order ID: <%= order.id %></p>
+    <p class= "Name"><%= User.where(id: order.user_id).first.name %></p>
+    <hr>
+    <% order.order_items.order(:id).each do |oitem| %>
+      <div class= "OrderItem-section" >
+        <div class="OrderItem">
+          <p class= "OrderItem-name"><%= oitem.menu_item_name %>  x  <%= oitem.quantity %><p>
+          <p class="MenuItem-quantity">Rs. <%= oitem.quantity * oitem.menu_item_price %></p>
+        </div>
+        <p>Rs. <%= oitem.menu_item_price %></p>
+      </div>
+    <% end %>
+    <p class= "Total">Total: Rs.<%= order.total %></p>
+    <hr>
+    <% status = order.delivered_at == nil ? order.status : "Delivered on #{ order.delivered_at.strftime("%d-%m-%Y at %I:%M %p")}" %>
+    <p class= "Order-status">Order <%= status %></p>
+    <% if order.delivered_at == nil and @current_user.role != "Customer"%>
+      <%= form_with url: "/orders/#{order.id}", method: "put", class: "OrderDeliver" do |form| %>
+        <%= form.submit "Delivered", class: "Form-submit"%>
+      <% end %>
+    <% end %>
+  </section>
+<% end %>

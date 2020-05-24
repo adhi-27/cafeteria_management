@@ -3,14 +3,75 @@
 }
 
 .Welcome-section{
-  max-width: 500px;
-  margin: auto;
+  width: 50%;
   margin-top: 120px;
-
 }
 
 .Welcome-title{
-  font-size: 50px;
+  font-size: 55px;
   color: white;
+  font-weight: 900;
+  -webkit-text-stroke: 3px black;
   font-family: monospace;
+  padding-left: 300px;
+}
+
+.About-section{
+  margin-top: 112px;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+  font-family: cursive;
+}
+
+.About-usersection{
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+  font-family: cursive;
+}
+
+.About-head{
+  display: block;
+  width: 100%;
+  height: 100px;
+  font-size: 40px;
+  font-weight: 900;
+  color: maroon;
+  background-color: rgba(255, 255, 255, 0.719);
+  padding-top: 50px;
+}
+
+.About{
+  margin: 0 auto;
+  max-width: 1000px;
+  background-color: #f9dba0be;
+}
+
+.About-name{
+  font-size: 30px;
+  color: #68a012;
+  font-weight: bold;
+  border-bottom: 3px solid #68a012;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.About-title{
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.About-text{
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.SignIn-section{
+  margin-left: auto;
 }

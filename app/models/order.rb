@@ -14,7 +14,15 @@ class Order < ApplicationRecord
     order.save!
   end
 
-  def self.confirmed?
+  def self.placed?
     all.where.not(:status => "Being Created")
+  end
+
+  def self.total
+    total = 0
+    all.each do |order|
+      total = total + order.total.to_d
+    end
+    return total
   end
 end

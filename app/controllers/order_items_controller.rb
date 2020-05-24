@@ -8,10 +8,10 @@ class OrderItemsController < ApplicationController
     end
     @order_item = OrderItem.find_by(order_id: session[:current_order_id], menu_item_id: mitem_id)
     if @order_item
-      @order_item.quantity = quantity
-      if @order_item.quantity == nil
+      if quantity == 0
         @order_item.destroy
       else
+        @order_item.quantity = quantity
         @order_item.save!
       end
     else
@@ -24,7 +24,7 @@ class OrderItemsController < ApplicationController
         quantity: quantity,
       )
     end
-    redirect_to "/"
+    redirect_to "/cafeteria?category=#{params[:category]}"
   end
 
   def update
@@ -44,6 +44,13 @@ class OrderItemsController < ApplicationController
       end
     end
     order_item.save
+    redirect_to "/cafeteria/cart"
+  end
+
+  def destroy
+    order_item = MenuItem.find_by(id: params[:id])
+    order_item.destroy
+    flash[:success] = "Order Item Removed"
     redirect_to "/cafeteria/cart"
   end
 end
