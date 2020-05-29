@@ -84,26 +84,51 @@ class CafeteriaController < ApplicationController
     render "cart"
   end
 
-  def report
+  def sales_report
     if @current_user.role == "owner"
-      if params[:from_date]
-        from = params[:from_date]
+      if params[:customer] && params[:customer] != ""
+        user = User.find_by(id: params[:customer])
+        @orders = user.orders
+      end
+      flag = 0
+      if params[:fdate] && params[:fdate] != ""
+        from = params[:fdate]
       else
         from = Order.first.date
+        flag += 1
       end
-      @orders = Order.where("date >= ? and status = ?", from, "Delivered")
-      if params[:to_date] !=
-         to = params[:to_date]
+      if @orders
+        @orders = @orders.where("date >= ? and status = ?", from, "Delivered")
       else
-        to = Order.last.date
+        @orders = Order.where("date >= ? and status = ?", from, "Delivered")
       end
-      @range = "Report from #{from} to #{to}"
+      if params[:tdate] && params[:tdate] != ""
+        to = params[:tdate]
+      else
+        to = Date.today
+        flag += 1
+      end
+      if flag == 2
+        @range = "Report On All the Sales"
+      elsif from == to
+        @range = "Report on #{from.to_date.strftime("%d-%B-%Y")}"
+      else
+        @range = "Report from #{from.to_date.strftime("%d-%B-%Y")}   to   #{to.to_date.strftime("%d-%B-%Y")}"
+      end
+      if user
+        @range = user.name + " " + @range
+      end
       @orders = @orders.where("date <= ? ", to)
       @count = @orders.count
       @total = @orders.total
+      @users = User.where(role: "Customer")
       render "/cafeteria/sales_report"
     else
       redirect_to cafeteria_path
     end
+  end
+
+  def change_report
+    redirect_to report_path(fdate: params[:from_date], tdate: params[:to_date], customer: params[:customer])
   end
 end

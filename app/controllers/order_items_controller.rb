@@ -3,7 +3,8 @@ class OrderItemsController < ApplicationController
     mitem_id = params[:menu_item_id]
     quantity = params[:quantity]
     if !session[:current_order_id]
-      new_order = Order.create!(user_id: @current_user.id, date: Date.today, status: "Being Created")
+      user = @current_user.role == "Customer" ? @current_user : User.find_by(name: "Walk-in customer")
+      new_order = Order.create!(user_id: user.id, date: Date.today, status: "Being Created")
       session[:current_order_id] = new_order.id
     end
     @order_item = OrderItem.find_by(order_id: session[:current_order_id], menu_item_id: mitem_id)

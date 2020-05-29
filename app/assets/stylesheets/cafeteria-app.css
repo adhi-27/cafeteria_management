@@ -1,6 +1,6 @@
 body{
   font-family: sans-serif;
-  background: url('background1.jpg');
+  background: url('background3.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -388,4 +388,38 @@ body{
   max-width: 250px;
   font-size: 15px;
   font-weight: 500;
+}
+
+.Report-section{
+  max-width: 1000px;
+  margin: 20px auto;
+}
+
+.Report-div{
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  padding-left: 16px;
+  width: 1000px;
+  border: 2px solid black;
+  font-family: sans-serif;
+}
+
+.Report-form{
+  margin-bottom: 20px;
+}
+
+.Report-date{
+  margin-right: 20px;
+}
+
+.Report-range{
+  font-size: 30px;
+}
+
+.Report{
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }

@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   put "/cafeteria/menus/activate" => "cafeteria#activate", as: :activate_menu
   get "/cafeteria/users" => "cafeteria#users"
   get "cafeteria/about" => "cafeteria#about"
-  get "cafeteria/report" => "cafeteria#report"
+  get "cafeteria/sales_report" => "cafeteria#sales_report", as: :report
+  post "cafeteria/change_report" => "cafeteria#change_report"
 end

@@ -1,15 +1,18 @@
-<%= form_with(url: "/cafeteria/report", method: "GET", class: "Report-form") do |f| %>
-  <%= f.label "From" %>
-  <%= f.date_field(:from_date) %>
-  <%= f.label "To" %>
-  <%= f.date_field(:to_date, max: Date.today) %>
-  <%= f.submit("View",class: "AddMenu-button") %>
-<% end %>
+<section class= "Report-section">
+  <div class="Report-div">
+    <%= form_with(url: "/cafeteria/change_report", method: "post", class: "Report-form") do |f| %>
+      <%= f.label "From: " %>
+      <%= f.date_field(:from_date, min: Order.first.date, class: "Report-date")%>
+      <%= f.label "To: " %>
+      <%= f.date_field(:to_date, max: Date.today, class: "Report-date") %>
+      <%= f.label "Customer: " %>
+       <%= f.select :customer, options_from_collection_for_select(@users, "id", "name"), prompt: "Select Customer(optional)" %>
+      <%= f.submit("View",class: "AddMenu-button") %>
+    <% end %>
+    <p class= "Report-range"><%= @range %></p>
+    <p class= "Report">Total No. of Orders: <%= @count%></p>
+    <p class= "Report">Total Sales: Rs.<%= @total%></p>
+  </div>
 
-<div class="AddMenu-div">
-  <p><%= @range %></p>
-  <p>Total No. of Orders: <%= @count%></p>
-  <p>Total Sales: Rs.<%= @total%></p>
-</div>
-
-<%= render partial: "orders-section", locals: { orders: @orders } %>
+  <%= render partial: "orders-section", locals: { orders: @orders } %>
+</section>
