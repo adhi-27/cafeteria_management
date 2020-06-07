@@ -28,7 +28,7 @@
     <%end%>
     <p class= "Total">Total: Rs.<%= total %></p>
     <p class= "Order-button">
-      <%= form_with(url: "/orders/confirm", method: "put") do %>
+      <%= form_with(url: "/orders/confirm", method: "put", class: "Order-button") do %>
         <%= hidden_field_tag "total", total %>
         <%= submit_tag "Order", class: "Form-submit" %>
       <% end %>

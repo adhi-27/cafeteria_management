@@ -9,7 +9,7 @@ class OrderItemsController < ApplicationController
     end
     @order_item = OrderItem.find_by(order_id: session[:current_order_id], menu_item_id: mitem_id)
     if @order_item
-      if quantity == 0
+      if quantity == "0"
         @order_item.destroy
       else
         @order_item.quantity = quantity

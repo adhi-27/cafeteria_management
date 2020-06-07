@@ -2,6 +2,8 @@
     <p class="Flash-success"><%= flash[:success] %> </p>
 <% end %>
 
+<% @users = @users.where.not(name: 'Walk-in customer')%>
+
 <%= render partial: "user-section", locals: {
        user_type: "Customer",
        users: @users.where(role: 'Customer'),

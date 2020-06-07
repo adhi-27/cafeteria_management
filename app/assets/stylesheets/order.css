@@ -15,7 +15,7 @@
 }
 
 .Order-button{
-  margin-left: 300px;
+  text-align: center;
 }
 
 .Order-status{
@@ -109,6 +109,7 @@
   background-color: maroon;
   border: 1px solid transparent;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .OrderStatus{

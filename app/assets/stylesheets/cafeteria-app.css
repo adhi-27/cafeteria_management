@@ -206,6 +206,7 @@ body{
 .CrossImage{
   height: 18px;
   width: 18px;
+  margin-left: 10px;
 }
 
 .Order-title{
@@ -406,8 +407,29 @@ body{
   font-family: sans-serif;
 }
 
+.Report-orderItem{
+  display: flex;
+  align-items: center;
+  width: 700px;
+  font-size: 15px;
+  background-color: white;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 20px auto;
+}
+
+.Report-orderItem:hover{
+  background-color: lightseagreen;
+  cursor: pointer;
+}
+
 .Report-form{
   margin-bottom: 20px;
+}
+
+.Report-orders{
+  display: none;
 }
 
 .Report-date{
