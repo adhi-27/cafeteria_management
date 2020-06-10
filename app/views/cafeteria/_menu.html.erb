@@ -21,7 +21,7 @@
           <p class= "MenuItem-name"><%= mitem.name %>  - Rs. <%= mitem.price %></p>
           <%= form_with(url: order_items_path, method: "POST") do %>
             <%= hidden_field_tag("menu_item_id", mitem.id) %>
-            <%= hidden_field_tag("category", @category) %>
+            <%= hidden_field_tag("category", category) %>
             <% order_item = OrderItem.find_by(order_id: session[:current_order_id], menu_item_id: mitem.id)
                 if order_item
                   disp = order_item.quantity
@@ -31,7 +31,7 @@
                   prompt = "Add To Cart"
                 end
             %>
-            <%= select_tag "quantity", options_for_select([prompt,1,2,3,4,5],disp), onchange: "this.form.submit()", class: "MenuItem-quantity" %>
+            <%= select_tag "quantity", options_for_select([prompt,1,2,3,4,5],disp), onchange: "this.form.submit()", class: "MenuItem-quantity", style: prompt == "Add To Cart" ? "" : "background-color: maroon; color: white;" %>
           <% end %>
         </div>
       </li>

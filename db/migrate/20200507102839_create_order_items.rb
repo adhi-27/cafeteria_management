@@ -5,6 +5,7 @@ class CreateOrderItems < ActiveRecord::Migration[6.0]
       t.bigint :menu_item_id
       t.string :menu_item_name
       t.decimal :menu_item_price
+      t.integer :quantity
     end
   end
 end

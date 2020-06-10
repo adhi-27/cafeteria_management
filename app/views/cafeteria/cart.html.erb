@@ -1,9 +1,9 @@
+<% if flash[:success] %>
+  <p class="Flash-success"><%= flash[:success] %> </p>
+<% end %>
 <section class= "Menu-section">
   <p class= "Menu-title">Order Items</p>
   <hr>
-  <% if flash[:error] %>
-    <p class="Flash-error"><%= flash[:error] %> </p>
-  <% end %>
   <% if @order_items && @order_items.count!=0 %>
     <% total = 0 %>
     <% @order_items.order(:id).each do |oitem| %>

@@ -17,7 +17,7 @@
 }
 
 .About-section{
-  margin-top: 112px;
+  margin-top: 133px;
   width: 100%;
   text-align: center;
   padding-bottom: 20px;
@@ -38,21 +38,23 @@
   font-size: 40px;
   font-weight: 900;
   color: maroon;
-  background-color: rgba(255, 255, 255, 0.719);
+  background-color: rgba(255, 255, 255, 0.89);
   padding-top: 50px;
 }
 
 .About{
   margin: 0 auto;
   max-width: 1000px;
-  background-color: #f9dba0be;
+  color: black;
+  border: 5px solid black;
+  background-color: rgba(255, 255, 255, 0.699);
 }
 
 .About-name{
   font-size: 30px;
-  color: #68a012;
+  color: #248000;
   font-weight: bold;
-  border-bottom: 3px solid #68a012;
+  border-bottom: 3px solid #248000;
   margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 20px;
@@ -69,7 +71,11 @@
 .About-text{
   font-family: monospace;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 14px;
+}
+
+.About-usertext{
+  font-weight: 900;
 }
 
 .SignIn-section{

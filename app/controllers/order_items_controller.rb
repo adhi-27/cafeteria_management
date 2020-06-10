@@ -25,7 +25,7 @@ class OrderItemsController < ApplicationController
         quantity: quantity,
       )
     end
-    redirect_to "/cafeteria?category=#{params[:category]}"
+    redirect_to "/cafeteria?category##{params[:category].split().join("_")}"
   end
 
   def update
@@ -49,7 +49,7 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    order_item = MenuItem.find_by(id: params[:id])
+    order_item = OrderItem.find_by(id: params[:id])
     order_item.destroy
     flash[:success] = "Order Item Removed"
     redirect_to "/cafeteria/cart"

@@ -6,6 +6,16 @@ body{
   background-attachment: fixed;
 }
 
+select{
+  border-radius: 10px;
+  min-width: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+}
+
 .Header{
   height: 100px;
   background-color: black;
