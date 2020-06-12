@@ -5,6 +5,8 @@
 .Welcome-section{
   width: 50%;
   margin-top: 120px;
+  margin: auto;
+  flex: 0 1 auto;
 }
 
 .Welcome-title{
@@ -79,5 +81,6 @@
 }
 
 .SignIn-section{
-  margin-left: auto;
+  margin: auto;
+  flex: 0 1 auto;
 }

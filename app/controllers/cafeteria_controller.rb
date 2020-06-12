@@ -32,8 +32,10 @@ class CafeteriaController < ApplicationController
     else
       if params[:order] == "D"
         @user_orders = Order.where(:status => "Delivered")
+        @status = "Delivered"
       else
         @user_orders = Order.where(:status => "Confirmed")
+        @status = "Confirmed"
       end
     end
     render "orders"

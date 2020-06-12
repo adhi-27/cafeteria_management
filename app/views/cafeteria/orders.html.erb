@@ -1,9 +1,8 @@
 <% if @user_orders.count!=0 %>
   <% if @current_user.role != "Customer"%>
     <div class= "OrderStatus">
-      <% status= @user_orders.first.status %>
-      <a href="/cafeteria/orders?order=P" class= <%= status == "Confirmed"? "StatusActive" : "OrderStatus-text" %> >Pending</a>
-      <a href="/cafeteria/orders?order=D" class= <%= status == "Delivered"? "StatusActive" : "OrderStatus-text" %> >Delivered</a>
+      <a href="/cafeteria/orders?order=P" class= <%= @status == "Confirmed"? "StatusActive" : "OrderStatus-text" %> >Pending</a>
+      <a href="/cafeteria/orders?order=D" class= <%= @status == "Delivered"? "StatusActive" : "OrderStatus-text" %> >Delivered</a>
     </div>
   <% end %>
   <% if flash[:success] %>
@@ -11,7 +10,16 @@
   <% end %>
   <%= render partial: "orders-section", locals: { orders: @user_orders } %>
 <% else %>
+  <% if Order.count !=0 %>
+      <div class= "OrderStatus">
+        <a href="/cafeteria/orders?order=P" class= <%= @status == "Confirmed"? "StatusActive" : "OrderStatus-text" %> >Pending</a>
+        <a href="/cafeteria/orders?order=D" class= <%= @status == "Delivered"? "StatusActive" : "OrderStatus-text" %> >Delivered</a>
+      </div>
+      <% msg = "No Pending Orders"%>
+    <% else %>
+      <% msg = "No Orders Yet"%>
+    <% end %>
   <section class= "Menu-section">
-    <p class = EmptyOrder >No Orders Yet</p>
+    <p class = EmptyOrder ><%= msg %></p>
   </section>
 <% end %>
