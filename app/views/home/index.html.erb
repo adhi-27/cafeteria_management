@@ -1,30 +1,26 @@
 <section class= "Home">
   <div class= "Welcome-section">
-    <div>
-      <h1 class= 'Welcome-title'> Welcome to the Cafeteria</p>
-    </div>
+      <h1 class= 'Welcome-title'> Welcome to the<br>Cafeteria</p>
   </div>
 
-  <div class="SignIn-section">
-    <div class= "UserNew">
-      <p class= "NewUsers-title"> Sign-in!</p>
-      <% if flash[:error] %>
-        <p class="Flash-error"><%= flash[:error] %> </p>
-      <% end %>
-      <%= form_with url: sessions_path do |form| %>
-        <div class= "Form-section">
-          <p class= "FieldText">Email: </p>
-          <%= form.email_field :email, autofocus: true, class: "TextField" %>
-        </div>
-        <div class= "Form-section">
-          <p class= "FieldText">Password: </p>
-          <%= form.password_field :password, class: "TextField" %>
-        </div>
-        <div class= "Form-section">
-          <%= form.submit "Sign-in!", class: "Form-submit"%>
-        </div>
-      <% end %>
-    </div>
+  <div class= "UserNew">
+    <p class= "NewUsers-title"> Sign-in!</p>
+    <% if flash[:error] %>
+      <p class="Flash-error"><%= flash[:error] %> </p>
+    <% end %>
+    <%= form_with url: sessions_path do |form| %>
+      <div class= "Form-section">
+        <p class= "FieldText">Email: </p>
+        <%= form.email_field :email, autofocus: true, class: "TextField" %>
+      </div>
+      <div class= "Form-section">
+        <p class= "FieldText">Password: </p>
+        <%= form.password_field :password, class: "TextField" %>
+      </div>
+      <div class= "Form-section">
+        <%= form.submit "Sign-in!", class: "Form-submit"%>
+      </div>
+    <% end %>
   </div>
 </section>
 
