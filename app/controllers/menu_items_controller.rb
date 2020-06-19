@@ -6,11 +6,11 @@ class MenuItemsController < ApplicationController
     else
       if params[:menu_id]
         SpecificMenuItem.create!(menu_id: params[:menu_id], menu_item_id: new_menu_item.id)
+        session[:menu_id] = params[:menu_id]
+        session[:menu_name] = Menu.find_by(id: params[:menu_id]).name
       end
       flash[:success] = "Menu Item Added Successfully"
     end
-    session[:menu_id] = params[:menu_id]
-    session[:menu_name] = Menu.find_by(id: params[:menu_id]).name
     redirect_to "/cafeteria/menu_items"
   end
 

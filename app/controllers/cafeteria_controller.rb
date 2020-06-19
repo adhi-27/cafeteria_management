@@ -73,8 +73,6 @@ class CafeteriaController < ApplicationController
       if session[:menu_id]
         @menu_id = session[:menu_id]
         session[:menu_id] = nil
-      end
-      if session[:menu_name]
         @title = session[:menu_name]
         session[:menu_name] = nil
       else
