@@ -20,6 +20,10 @@ class MenuItemsController < ApplicationController
 
   def destroy
     menu_item = MenuItem.find_by(id: params[:id])
+    sitems = SpecificMenuItem.where(menu_item_id: params[:id])
+    sitems.each do |item|
+      item.destroy
+    end
     menu_item.destroy
     flash[:success] = "Menu Item Destroyed"
     redirect_to "/cafeteria/menu_items"
