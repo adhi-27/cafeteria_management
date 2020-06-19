@@ -6,6 +6,7 @@ class SpecificMenuItemsController < ApplicationController
     else
       SpecificMenuItem.create!(menu_id: params[:menu_id], menu_item_id: params[:mitem_id])
     end
+    redirect_to "/cafeteria/menu_items"
   end
 
   def destroy
