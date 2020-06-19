@@ -1,0 +1,32 @@
+<section class= "Report-section">
+  <div class="Report-div">
+    <p class= "Order-range">SEARCH</p>
+    <% if flash[:error] %>
+      <p class="Flash-error"><%= flash[:error] %></p>
+    <% end %>
+    <%= form_with(url: "/cafeteria/change_order_range", method: "post", class: "Report-form") do |f| %>
+      <%= f.label "Order ID: " %>
+      <%= f.number_field(:order_id, min: Order.first.date, class: "Report-date")%>
+      <%= f.hidden_field :order, value: "I" %>
+      <%= f.submit("View",class: "AddMenu-button") %>
+    <% end %>
+    <p class= "Report">OR</p>
+    <%= form_with(url: "/cafeteria/change_order_range", method: "post", class: "Report-form") do |f| %>
+      <%= f.label "From: " %>
+      <%= f.date_field(:from_date, min: Order.first.date, class: "Report-date")%>
+      <%= f.label "To: " %>
+      <%= f.date_field(:to_date, max: Date.today, class: "Report-date") %>
+      <%= f.label "Customer: " %>
+      <%= f.select :customer, options_from_collection_for_select(User.customers.order(:name), "id", "name"), prompt: "Select Customer(optional)" %>
+      <%= f.hidden_field :order, value: "R" %>
+      <%= f.submit("View",class: "AddMenu-button") %>
+    <% end %>
+  </div>
+  <% if @user_orders.count!=0 %>
+    <%= render partial: "orders-section", locals: { orders: @user_orders } %>
+  <% else %>
+    <section class= "Menu-section">
+      <p class = EmptyOrder >No Such Orders</p>
+    </section>
+  <% end %>
+</section>

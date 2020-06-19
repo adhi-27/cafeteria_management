@@ -86,6 +86,20 @@
   border: 2px solid maroon;
 }
 
+.ReportDate-section{
+  border: 5px solid black;
+  margin-top: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  background-color: maroon;
+}
+
+.ReportDate{
+  font-size: 20px;
+  color: white;
+}
+
 .MenuNames-section{
   border: 5px solid black;
   margin-top: 50px;

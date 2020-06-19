@@ -1,9 +1,11 @@
 .Home{
+  display: flex;
 }
 
 .Welcome-section{
-  width: 900px;
-  display: inline-block;
+  max-width: 900px;
+  margin: auto;
+  padding-right: 50px;
 }
 
 .Welcome-title{
@@ -78,7 +80,7 @@
 }
 
 .UserNew{
-  display: inline-block;
+  max-width: 50%;
   margin: auto;
   margin-top: 120px;
   padding: 20px 20px;

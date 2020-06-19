@@ -421,7 +421,7 @@ select{
   display: flex;
   align-items: center;
   width: 700px;
-  font-size: 15px;
+  font-size: 17px;
   background-color: white;
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
@@ -448,6 +448,11 @@ select{
 
 .Report-range{
   font-size: 30px;
+}
+
+.Order-range{
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .Report{

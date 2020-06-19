@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   get "cafeteria/about" => "cafeteria#about"
   get "cafeteria/sales_report" => "cafeteria#sales_report", as: :report
   post "cafeteria/change_report" => "cafeteria#change_report"
+  get "cafeteria/order_range" => "cafeteria#order_range", as: :order_range
+  post "cafeteria/change_order_range" => "cafeteria#change_order_range"
 end

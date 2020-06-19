@@ -14,5 +14,14 @@
     <p class= "Report">Total Sales: Rs.<%= @total%></p>
   </div>
 
-  <%= render partial: "report-orders", locals: { orders: @orders } %>
+  <% while @from != @to + 1 %>
+    <% orders = @orders.where(date: @from) %>
+    <% if !orders.empty? %>
+      <div class= "ReportDate-section">
+        <p class= "ReportDate"> <%= @from.strftime("%d %B") %> - Total: <%= orders.total %> </p>
+      </div>
+      <%= render partial: "report-orders", locals: { orders: @orders.where(date: @from) } %>
+    <% end %>
+    <% @from = @from + 1 %>
+  <% end %>
 </section>

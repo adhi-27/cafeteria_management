@@ -41,6 +41,32 @@ class CafeteriaController < ApplicationController
     render "orders"
   end
 
+  def order_range
+    if params[:order] == "I"
+      @user_orders = Order.where(:id => params[:order_id])
+    elsif params[:order] == "R"
+      @status = nil
+      if params[:customer] != ""
+        user = User.find_by(id: params[:customer])
+        @user_orders = user.orders
+      end
+      if params[:from_date] != "" && params[:to_date] != ""
+        if @user_orders
+          @user_orders = @user_orders.where("date >= ? and date <= ?", params[:from_date].to_date, params[:to_date].to_date)
+        else
+          @user_orders = Order.where("date >= ? and date <= ?", params[:from_date].to_date, params[:to_date].to_date)
+        end
+      else
+        flash[:error] = "From and To Dates are Required"
+      end
+    end
+    render "order_range"
+  end
+
+  def change_order_range
+    redirect_to order_range_path(order: params[:order], order_id: params[:order_id], from_date: params[:from_date], to_date: params[:to_date], customer: params[:customer])
+  end
+
   def menu_items
     if @current_user.role == "owner"
       @menu_items = MenuItem.all
@@ -110,12 +136,14 @@ class CafeteriaController < ApplicationController
         to = Date.today
         flag += 1
       end
+      @from = from.to_date
+      @to = to.to_date
       if flag == 2
         @range = "Report On All the Sales"
       elsif from == to
-        @range = "Report on #{from.to_date.strftime("%d-%B-%Y")}"
+        @range = "Report on #{@from.strftime("%d-%B-%Y")}"
       else
-        @range = "Report from #{from.to_date.strftime("%d-%B-%Y")}   to   #{to.to_date.strftime("%d-%B-%Y")}"
+        @range = "Report from #{@from.strftime("%d-%B-%Y")}   to   #{@to.strftime("%d-%B-%Y")}"
       end
       if user
         @range = user.name + " " + @range
@@ -123,7 +151,7 @@ class CafeteriaController < ApplicationController
       @orders = @orders.where("date <= ? ", to)
       @count = @orders.count
       @total = @orders.total
-      @users = User.where(role: "Customer")
+      @users = User.customers
       render "/cafeteria/sales_report"
     else
       redirect_to cafeteria_path
