@@ -23,7 +23,7 @@
   <% mitems.select(:category).distinct.each do |item| %>
     <a id="<%= item.category.split().join('_') %>" >
       <%= render partial: "menu", locals: {
-            menu_items: MenuItem.where(category: item.category),
+            menu_items: mitems.where(category: item.category),
             category: item.category }
       %>
     </a>
