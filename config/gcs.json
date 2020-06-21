@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cafeteria-280913",
+  "private_key_id": "a5d4d5df6f3b54673d61e3506e451c372a0ecd8e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQCya1DaeCYwMGPs\nKBeN1F6KOqLBhT6ljWtTZ687XdclXyFEssyg5Y1W0ephb0x1SEWyF7b7B7m2FMCO\nJoStfbOMecs9m4jE67+HhRxheyJ/4+BKCDnelxAbKCISNfIZ/QTv3sBcgQqDKRun\nBjOiNGdnvbC1uFTbiBTwoftFpdg3xbF+EsOn6K/5CZZdBCUyY2UZtb39ZN4tG91S\n1qVA98xiAMJtH9Dym0a2+Fm0N5oILqbJ4YoBtLVqn52dMaNEyPRaiLlwJC7sfa0m\nrdJUxgVkqow/pHUw/H1yXRZ5321cgUET9gosaNNsnokza0dvADPg/Rwv608tRLI2\n/jev6h9DAgMBAAECgf8e8IuWXj50eVuydjYOeOIlqFOHvRP8DGcZ8LO/k6IX/wFh\nJAUn2WYEpzP7u8ZqtzuF4DhSNAv0AJflKm5S+tbpQXRTfHPizeUyScxcNu26WXmx\nkENUyWMXNbVRKRkanxodObHFYhFxo/1tgyRCyzx4oA/ftSCtsmXOTYt2q2iNXMpC\nmKa5u7PmAkfGam9fC3PHMJaOnkteEuNeu8RNpNXbWDMt8ol/ZLViwGb6/E0RBEzH\niGXNWJladCfSJ4aqmh5eVY7AjxPyZnjwIvAR4ZUh1+vGxK9We322Hxn+vnHL/SN/\nNeHzyJGMwvU80TrC/9eXSe7Yc8Gi+lI7iGb7r+ECgYEA2ewId9CkKdSg9CGEp2Eb\ny5qmoJgOBrG3m8i/1YouhCp8wPmDrxNgDpHzEGCJCUtwnBW8oqwpRGRdzdHWWAG9\nRYmaoFJWQYW23dkPIgEJxnLOXSeXUH46JDFLS2RqDC/aJ5P+C4p0ZYlKZohCIyU1\njTjaeqL+zQ1LofwYQlnTH+kCgYEA0ZhD5OVavfLj37ERkkSCHwLKZdCOYGMsuoiQ\nycggUxvwG+83iuz4xKxrHJnFa+RvBI9/nYpL5Ud4PfnhB0ITVmcfQDJwU1lXus1I\nDI+UhI2aXDkJycQc++rWFFXOLwsTC5sLCvbWAWlAt8WDx3CJYWNcrhG4T4r+ucS/\nsqxr1ksCgYAtLd0Xkf7m2TlBQ82vsddEX9yZwMxvoNqTBoyW5d388p4Il/IwEtFA\nVAvTYmAmuCgxg+QmyZCIqFI2QIGynzGxP/T5tfhB/0nJNp4Hi7WOGfEkqPea7YB6\nTmnwyHGf8y/EMs9hbyPwhQUSur8TcDxo+dd5w18V/eKnQ493+g1mOQKBgGDUTIGB\n6CMbBGWCg1Ckr8yt2F2jNTOYfcCLeQCPoUdj/9CX+nwHMIKD+VQUQl2vAg8EUHuy\nuY9qLkXLnEdjIlXnfEuHQddvzhTx45hR+NYoKSjz/O6m2JEVk+N/JKsdHaZd8YMW\nOBYczxZXfKL1/bHtWpLcgt7Uowultr5P493zAoGAWPloFgy8+deMBik2klzhdxKB\nrlv+7jvK6VAVfKRLBt3dGRKUXp7BBWNKCVe2Ex/tKaKHqVKpF/Ea7HEav5rC0YAw\nNyrCe5DFNWQqfnccikmvFJJUhvSdonArN2gGj6gIYAQaw87jSajE8VI8wHxr23Gb\nzUcYetrtNFoLtQoskec=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cafeteria-pics@cafeteria-280913.iam.gserviceaccount.com",
+  "client_id": "113768254391071439194",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cafeteria-pics%40cafeteria-280913.iam.gserviceaccount.com"
+}
