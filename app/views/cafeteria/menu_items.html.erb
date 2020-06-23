@@ -12,7 +12,7 @@
     <%= form_with(url: menu_items_path, method: "POST", class: "AddMenu-Item") do |f| %>
       <%= f.text_field(:name, placeholder: "Item Name", class: "AddMenu-name") %>
       <%= f.text_field(:category, placeholder: "Category", class: "AddMenu-name") %>
-      <%= f.text_field(:price, placeholder: "Price", class: "AddMenu-name") %>
+      <%= f.number_field(:price, step: :any, placeholder: "Price", class: "AddMenu-name") %>
       <% if @menu_id %>
         <%= f.hidden_field(:menu_id, value: @menu_id) %>
       <% end %>

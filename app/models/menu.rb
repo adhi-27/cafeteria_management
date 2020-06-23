@@ -3,6 +3,6 @@ class Menu < ApplicationRecord
 
   validates :name, presence: true
   def self.active_menu
-    all.where(active: true).first
+    find_by(active: true)
   end
 end

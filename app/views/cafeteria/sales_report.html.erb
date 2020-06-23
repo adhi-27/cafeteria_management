@@ -9,6 +9,9 @@
        <%= f.select :customer, options_from_collection_for_select(@users, "id", "name"), prompt: "Select Customer(optional)" %>
       <%= f.submit("View",class: "AddMenu-button") %>
     <% end %>
+    <% if flash[:error]  %>
+      <p class="Flash-error"><%= flash[:error] %> </p>
+    <% end %>
     <p class= "Report-range"><%= @range %></p>
     <p class= "Report">Total No. of Orders: <%= @count%></p>
     <p class= "Report">Total Sales: Rs.<%= @total%></p>

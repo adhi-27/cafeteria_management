@@ -1,8 +1,10 @@
 <section class="Menus-section">
   <div class="Menu-head">
     <p class= "Menus-title"><%= menu_name %></p>
-    <%= form_with(url: "/menus/#{menu_id}", method: "delete") do %>
-      <%= image_submit_tag("menucross.png", class: "MenuCrossImage") %>
+    <% if Menu.active_menu.name != menu_name %>
+      <%= form_with(url: "/menus/#{menu_id}", method: "delete") do %>
+        <%= image_submit_tag("menucross.png", class: "MenuCrossImage") %>
+      <% end %>
     <% end %>
   </div>
   <hr>

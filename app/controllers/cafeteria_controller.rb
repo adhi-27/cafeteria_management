@@ -112,9 +112,20 @@ class CafeteriaController < ApplicationController
 
   def sales_report
     if @current_user.role == "owner"
+      @users = User.customers
       if params[:customer] && params[:customer] != ""
         user = User.find_by(id: params[:customer])
         @orders = user.orders
+      end
+      if params[:fdate] && params[:tdate]
+        params[:fdate]
+        params[:tdate].to_date
+        if params[:fdate] > params[:tdate]
+          flash[:error] = "From Date should be lesser than To Date"
+          params[:fdate] = Order.first.date
+          params[:tdate] = Date.today
+          @range = "Report On All Sales"
+        end
       end
       flag = 0
       if params[:fdate] && params[:fdate] != ""
@@ -136,20 +147,21 @@ class CafeteriaController < ApplicationController
       end
       @from = from.to_date
       @to = to.to_date
-      if flag == 2
-        @range = "Report On All the Sales"
-      elsif from == to
-        @range = "Report on #{@from.strftime("%d-%B-%Y")}"
-      else
-        @range = "Report from #{@from.strftime("%d-%B-%Y")}   to   #{@to.strftime("%d-%B-%Y")}"
-      end
-      if user
-        @range = user.name + " " + @range
+      if !@range
+        if flag == 2
+          @range = "Report On All the Sales"
+        elsif from == to
+          @range = "Report on #{@from.strftime("%d-%B-%Y")}"
+        else
+          @range = "Report from #{@from.strftime("%d-%B-%Y")}   to   #{@to.strftime("%d-%B-%Y")}"
+        end
+        if user
+          @range = user.name + "'s " + @range
+        end
       end
       @orders = @orders.where("date <= ? ", to)
       @count = @orders.count
       @total = @orders.total
-      @users = User.customers
       render "/cafeteria/sales_report"
     else
       redirect_to cafeteria_path

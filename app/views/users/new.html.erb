@@ -20,6 +20,10 @@
       <%= form.password_field :password, class: "TextField" %>
     </div>
     <div class= "Form-section">
+      <p class= "FieldText">Re-enter password: </p>
+      <%= form.password_field :repass, class: "TextField" %>
+    </div>
+    <div class= "Form-section">
       <%= form.submit "Sign-up!", class: "Form-submit"%>
     </div>
   <% end %>
